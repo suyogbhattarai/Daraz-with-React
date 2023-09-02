@@ -1,0 +1,69 @@
+.header {
+  background-color: #f85606;
+  text-align: center;
+  padding: 10px 0px;
+}
+.header .top {
+  margin-bottom: 10px;
+}
+.header .top nav {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+}
+.header .top nav ul li {
+  list-style: none;
+}
+.header .top nav ul li :link {
+  text-decoration: none;
+  color: white;
+}
+.header .top .save-more {
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 5px 0px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+.header .top .save-more padding p {
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .top .save-more .logo-1 {
+  width: 10%;
+}
+.header .navigation {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .navigation .logo-main {
+  width: 120px;
+}
+.header .navigation form {
+  position: relative;
+  width: 60%;
+}
+.header .navigation form .search {
+  position: absolute;
+  right: 25px;
+  top: 15px;
+}/*# sourceMappingURL=header.css.map */
