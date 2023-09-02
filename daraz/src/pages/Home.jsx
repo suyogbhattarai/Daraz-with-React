@@ -47,6 +47,7 @@ function Home() {
 
   return (
     <>
+    <div className="home">
     <div className="banner-main">
       <div className="container">
         <div className="row " onMouseLeave={handleMenuLeave} >
@@ -126,6 +127,7 @@ function Home() {
 
           </div>
         </div>
+      </div>
       </div>
       </div>
     </>
