@@ -1,106 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import React, { useState } from 'react'
 import "./home.scss"
+import Categories from '../components/Categories';
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 {/* $brand:#f85606; */}
+import "../pages/Details"
+
 
 function Home() {
-  const [product, setProduct] = useState([]);
-  const [category, setCategory] = useState([])
-  const [currentCategory, setCurrentCategory] = useState(null);
-  const [currentTitle, setCurrentTitle] = useState(null);
-
-  const handleMenuLeave = () => {
-    setCurrentCategory(null);
-    setCurrentTitle(null);
-  };
-
+  const [products,setProducts]=useState([])
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const product = await response.json();
-      setProduct(product);
+    const recieveProducts=async()=>{
+      const response=await fetch("https://fakestoreapi.com/products");
+      const products=await response.json();
+      setProducts(products);
     };
-    fetchProducts();
 
-  }, []);
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const response = await fetch("https://fakestoreapi.com/products/categories");
-      const category = await response.json();
-      setCategory(category);
-    };
-    fetchCategories();
-
-  }, []);
-
-  const handleCategoryHover = (category) => {
-    setCurrentCategory(category);
-  };
-  const handleTitleHover = (title) => {
-    setCurrentTitle(title);
-  };
-
-  let catfilter = product.filter((q) => q.category == currentCategory)
-  let titlefilter = product.filter((q) => q.title == currentTitle)
-
-
+    
+    
+  
+   recieveProducts();
+  }, [])
+  
+ 
   return (
     <>
-    <div className="home">
+    <div className="home container">
     <div className="banner-main">
-      <div className="container">
-        <div className="row " onMouseLeave={handleMenuLeave} >
-          <div className="col-lg-3 category-box "  >
-
+      <div >
+        <div className="row "  >
+          <div className="col-lg-3 category-box ">
             <h5 className='cat-title' >Category:</h5>
-
-            <div className="card   rounded-pill ">
-              <ul class="list-group">
-                {category.map((cat) =>
-                  <li class="list-group-item text-secondary d-flex justify-content-between" style={{ fontSize: 13 }} key={cat}
-                    onMouseEnter={() => handleCategoryHover(cat)}><Link>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
-                )
-                }
-              </ul>
-            </div>
-
-            {currentCategory && (
-              <div className="card col   sub-menu" >
-
-                <ul class="list-group" onMouseEnter={() => handleTitleHover(prodtitle.title)}>
-                  {catfilter.map((prodtitle) =>
-                    <li class="list-group-item text-secondary d-flex gap-5 justify-content-between " style={{ fontSize: 13 }} key={prodtitle.title} onMouseEnter={() => handleTitleHover(prodtitle.title)}><Link>{ prodtitle.title.toUpperCase()}</Link><i class="fa fa-angle-double-right" aria-hidden="true"></i></li>
-                  )
-                  }
-                </ul>
-
-              </div>
-            )}
-            {currentTitle && (
-              <div className="card  col   product-menu p-3  "  >
-                <ul class="list-group">
-                  {titlefilter.map((titl) =>
-                    <>
-                    <div className="d-flex gap-3 mb-3">
-                      <img style={{ width: 80 }} src={titl.image} alt="" />
-                      <p class=" text-secondary " style={{ fontSize: 13 }} key={titl.id}><Link>{titl.title.toUpperCase()}</Link></p>
-                      </div>
-                      <div className='list-group-item'>
-                      <p class=" text-secondary " style={{ fontSize: 13 }} key={titl.price}><Link>Price:${titl.price}</Link></p>
-                      <p class=" text-secondary " style={{ fontSize: 13 }} key={titl.description}><Link>Description:<br/>{titl.description}</Link></p>
-                      
-                      </div>
-                    </>
-
-                  )
-                  }
-                </ul>
-              </div>)}
-
-
-
-
+            <Categories/ >
           </div>
           <div className="col-lg-9 ">
             <div id="carouselExampleAutoplaying" className="carousel slide " data-bs-ride="carousel">
@@ -128,10 +59,43 @@ function Home() {
           </div>
         </div>
       </div>
+    </div>
+    <div className="products">
+      <h4 className='mb-4 mt-5'>Just For You</h4>
+      <div className="row">
+      {products.map((prod)=>
+      <>
+      <div className="col-lg-2 mb-4 d-flex item-center ">
+        <Link  to={`/details/${prod.title}`}>
+      <div style={{maxWidth:1400,height:260,overflow:'hidden'}} className="card shadow p-4 pb-3 hover-zoom"   >
+        <div className='text-center'> 
+        <Link to={`/details/${prod.title}`}><img style={{maxWidth:100,maxHeight:100,overflow:'hidden',textAlign:'center'}} src={prod.image}  alt="" /></Link>
+        <p style={{
+  fontSize: 14,
+  paddingTop:3,
+  display: '-webkit-box',
+  WebkitLineClamp: 2, // Number of lines you want to display
+  WebkitBoxOrient: 'vertical',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+}}><Link to={`/details/${prod.title}`} >{prod.title}</Link></p>
+</div>
+        <p >${prod.price}</p>
+        <div className='d-flex gap-2'><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></div>
       </div>
+      </Link>
       </div>
+      </>
+       )}
+      </div>
+      <div  className=' load-btn m-4'><h4 className='text-center'>Load More</h4></div>
+
+    </div>
+    </div>
     </>
+   
   )
 }
+
 
 export default Home

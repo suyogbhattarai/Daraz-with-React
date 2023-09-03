@@ -1,13 +1,10 @@
-.home{
-    
-.banner-main
-{
-    margin-top: 15px;
+.categories{
+  
+ 
 .category-box{
     position: relative;
+   
     .card{
-     
-        
         ul{
             li{
                 &:hover{
@@ -53,23 +50,4 @@
     }
    
 }
-}
-}
-.products{
-    .card{
-        transition: 0.5s;
-        &:hover{
-
-background-color:#f85706b7;
-        }
-    }
-    .load-btn{
-        color: #f85606;
-        border: 1px solid #f85606;
-        display: inline-block;
-        text-align: center;
-        padding: 5px;
-        
-        
-    }
 }
