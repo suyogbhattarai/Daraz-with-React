@@ -30,8 +30,8 @@ function Home() {
       <div >
         <div className="row "  >
           <div className="col-lg-3 category-box ">
-            <h5 className='cat-title' >Category:</h5>
-            <Categories/ >
+            <h5 className='cat-title' >Mega Menu </h5>
+            <Categories/>
           </div>
           <div className="col-lg-9 ">
             <div id="carouselExampleAutoplaying" className="carousel slide " data-bs-ride="carousel">

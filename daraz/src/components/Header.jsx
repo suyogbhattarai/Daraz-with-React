@@ -35,9 +35,9 @@ function Header() {
 
             <nav>
               <ul className='d-flex gap-4 '>
-                <li><Link>Become a Seller</Link></li>
-                <li><Link>Recharge & Payments</Link></li>
-                <li><Link>Help & Support</Link></li>
+                <li><Link to="https://sellercenter.daraz.com.np/v2/seller/login?spm=a2a0e.11779170.header.d2.287d2d2b4ZdYxs&regist=truehttps://sellercenter.daraz.com.np/v2/seller/login?spm=a2a0e.11779170.header.d2.287d2d2b4ZdYxs&regist=true">Become a Seller</Link></li>
+                <li><Link to="https://pages.daraz.com.np/wow/gcp/daraz/channel/np/daraz-pay/daraz-pay?spm=a2a0e.11779170.header.d9.287d2d2bLXwgwF">Recharge & Payments</Link></li>
+                <li><Link to="https://helpcenter.daraz.com.np/page/home?pageId=3&language=en">Help & Support</Link></li>
               </ul>
             </nav>
 

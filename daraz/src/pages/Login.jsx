@@ -1,5 +1,6 @@
 import React from 'react'
 import "./login.scss"
+import { Link } from 'react-router-dom'
 
 function Login() {
   return (
