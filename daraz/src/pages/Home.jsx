@@ -30,7 +30,9 @@ function Home() {
       <div >
         <div className="row "  >
           <div className="col-lg-3 category-box ">
-            <h5 className='cat-title' >Mega Menu </h5>
+            <p className='cat-title' >Mega Menu </p>
+           
+
             <Categories/>
           </div>
           <div className="col-lg-9 ">
@@ -61,7 +63,7 @@ function Home() {
       </div>
     </div>
     <div className="products">
-      <h4 className='mb-4 mt-5'>Just For You</h4>
+      <h4 className='mb-4 mt-5 products-title'>Just For You</h4>
       <div className="row">
       {products.map((prod)=>
       <>
@@ -78,17 +80,17 @@ function Home() {
   WebkitBoxOrient: 'vertical',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-}}><Link to={`/details/${prod.title}`} >{prod.title}</Link></p>
+}}><Link to={`/details/${prod.title}` } className='text-black ' >{prod.title}</Link></p>
 </div>
         <p >${prod.price}</p>
-        <div className='d-flex gap-2'><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></div>
+        <div className="d-flex  "><u className='text-primary'><a href="">Buy Now!</a></u></div>
       </div>
       </Link>
       </div>
       </>
        )}
       </div>
-      <div  className=' load-btn m-4'><h4 className='text-center'>Load More</h4></div>
+      <div style={{marginInlineStart:500}}  className=' load-btn '><h4 className='text-center p-2'>Load More</h4></div>
 
     </div>
     </div>

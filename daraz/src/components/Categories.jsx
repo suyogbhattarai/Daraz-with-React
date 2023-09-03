@@ -45,10 +45,10 @@ function Categories() {
   return (
     <>
     <div className="categories" >
-     <div className="card cat-menu   rounded-pill ">
+     <div className="card cat-menu  ">
               <ul class="list-group">
                 {category.map((cat) =>
-                  <li class="list-group-item text-secondary d-flex justify-content-between" style={{ fontSize: 13 }} key={cat}
+                  <li class="list-group-item text-secondary d-flex justify-content-between py-3 px-5" style={{ fontSize: 13 }} key={cat}
                     onMouseEnter={() => handleCategoryHover(cat)} ><Link to={`/cat/${cat}/`}>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                 )
                 }
@@ -56,11 +56,19 @@ function Categories() {
     </div>
 
             {currentCategory && (
-              <div className="card col   sub-menu"  >
+              <div className="card col   sub-menu rounded"  >
 
                 <ul class="list-group" onMouseEnter={() => handleTitleHover(prodtitle.title)} onMouseLeave={handleMenuLeave}>
-                  {catfilter.map((prodtitle) =>
-                   <Link  to={`/details/${prodtitle.title}`}><li class="list-group-item text-secondary d-flex gap-5 justify-content-between " style={{ fontSize: 13 }} key={prodtitle.title} onMouseEnter={() => handleTitleHover(prodtitle.title)}>{ prodtitle.title.toUpperCase()}<i class="fa fa-angle-double-right" aria-hidden="true"></i></li></Link> 
+                  {catfilter.slice(0,4).map((prodtitle) =>
+                   <Link  to={`/details/${prodtitle.title}`}><li className="list-group-item text-secondary d-flex gap-5 justify-content-between p-3  " style={{
+                    fontSize: 13,
+                    paddingTop:3,
+                    display: '-webkit-box',
+                    WebkitLineClamp: 0, // Number of lines you want to display
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: "ellipsis",
+                  }} key={prodtitle.title} onMouseEnter={() => handleTitleHover(prodtitle.title)}>{ prodtitle.title.toUpperCase()}<i class="fa fa-angle-double-right" aria-hidden="true"></i></li></Link> 
                   )
                   }
                 </ul>
@@ -68,21 +76,22 @@ function Categories() {
               </div>
             )}
             {currentTitle && (
-              <div className="card  col   product-menu p-3  " onMouseLeave={handleMenuLeave}  >
-                <ul class="list-group">
+              <div className="card  col   product-menu p-3 " onMouseLeave={handleMenuLeave}  >
+                <h4 className='ms-4 mb-3'> Preview:</h4>
+                <ul class="">
                   {titlefilter.map((titl) =>
                     <>
-                    <div className="d-flex gap-3 mb-3">
-                      <img style={{ width: 80 }} src={titl.image} alt="" />
+                    <div className="d-flex gap-3 mb-2">
+                      <img style={{ width: 80,height:80 }} src={titl.image} alt="" />
                       <p class=" text-secondary " style={{ fontSize: 15 }} key={titl.id}><Link>{titl.title.toUpperCase()}</Link></p>
                       </div>
                       <div className='list-group-item'>
                       <p class=" text-secondary " style={{ fontSize: 13 }} key={titl.price}>Price:${titl.price}</p>
                       <p class=" text-secondary " style={{
   fontSize: 14,
-  paddingTop:3,
+  paddingTop:1,
   display: '-webkit-box',
-  WebkitLineClamp: 4, // Number of lines you want to display
+  WebkitLineClamp: 3, // Number of lines you want to display
   WebkitBoxOrient: 'vertical',
   overflow: 'hidden',
   textOverflow: "ellipsis",

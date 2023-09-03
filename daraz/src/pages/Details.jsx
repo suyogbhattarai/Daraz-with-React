@@ -36,7 +36,7 @@ function Details() {
           <span className="mb-3">Details:</span>
         </h3>
         {notFound ? ( // Display a message if the product is not found
-          <p>Sorry, this product is not available currently!</p>
+          <h3 className='fw-bold text-secondary text-center p-5 m-3'>Sorry, this product is not available currently!<br/>Please go back and browse other items</h3>
         ) : (
           <div className="row">
             {pdetail.map((d) => (
