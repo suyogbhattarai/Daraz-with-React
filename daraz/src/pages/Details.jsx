@@ -36,7 +36,10 @@ function Details() {
           <span className="mb-3">Details:</span>
         </h3>
         {notFound ? ( // Display a message if the product is not found
-          <h3 className='fw-bold text-secondary text-center p-5 m-3'>Sorry, this product is not available currently!<br/>Please go back and browse other items</h3>
+          <div className=' text-secondary text-center p-5 m-3'>
+            <img style={{width:120}} src="https://w7.pngwing.com/pngs/902/706/png-transparent-computer-icons-emoticon-sadness-others-face-smiley-web-button-thumbnail.png" alt="" />
+            <h1 className='fw-bolder'>Sorry, this product is not available currently!</h1>
+            <br/>Please go back and browse other items</div>
         ) : (
           <div className="row">
             {pdetail.map((d) => (

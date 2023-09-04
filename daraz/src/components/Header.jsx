@@ -74,7 +74,7 @@ function Header() {
               <p style={{fontSize:13}}><Link to="/login" className='text-light' >Login</Link></p>
               </div>
               <p style={{fontSize:13}}>|</p>
-              <p style={{fontSize:13}}><Link to="" className='text-light'>sign up</Link></p>
+              <p style={{fontSize:13}}><Link to="/signup" className='text-light'>sign up</Link></p>
               <div className='d-flex gap-2 text-light'>
             <i class="fa fa-globe  ms-3" aria-hidden="true"></i>
             <p style={{fontSize:13}}><Link className='text-light'>EN</Link><i className="fa fa-angle-down" aria-hidden="true"></i></p>
@@ -90,7 +90,7 @@ function Header() {
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/login/:lid" element={<Login/>}/>
-          <Route path='/cat/:catid' element={<Category/>}/>
+          <Route path='/cat/:cid' element={<Category/>}/>
           <Route path='/details/:did' element={<Details/>}/>
         
 

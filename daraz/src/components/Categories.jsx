@@ -48,8 +48,8 @@ function Categories() {
      <div className="card cat-menu  ">
               <ul class="list-group">
                 {category.map((cat) =>
-                  <li class="list-group-item text-secondary d-flex justify-content-between py-3 px-5" style={{ fontSize: 13 }} key={cat}
-                    onMouseEnter={() => handleCategoryHover(cat)} ><Link to={`/cat/${cat}/`}>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                  <li class="list-group-item text-secondary d-flex justify-content-between py-3 " style={{ fontSize: 15,fontWeight:400,letterSpacing:3 }} key={cat}
+                    onMouseEnter={() => handleCategoryHover(cat)} ><Link to={`/cat/${cat}/`} className='text-secondary'>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                 )
                 }
               </ul>
@@ -68,7 +68,7 @@ function Categories() {
                     WebkitBoxOrient: 'vertical',
                     overflow: 'hidden',
                     textOverflow: "ellipsis",
-                  }} key={prodtitle.title} onMouseEnter={() => handleTitleHover(prodtitle.title)}>{ prodtitle.title.toUpperCase()}<i class="fa fa-angle-double-right" aria-hidden="true"></i></li></Link> 
+                  }} key={prodtitle.title} onMouseEnter={() => handleTitleHover(prodtitle.title)}> { prodtitle.title.toUpperCase()}<i class="fa fa-angle-double-right" aria-hidden="true"></i></li></Link> 
                   )
                   }
                 </ul>
