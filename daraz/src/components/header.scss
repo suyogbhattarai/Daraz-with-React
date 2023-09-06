@@ -31,6 +31,7 @@
 }
 }
 .header{
+    
     :link{
         color: #ffffff
         ;
@@ -54,6 +55,7 @@ padding: 5px 0px;
  
 .top
 {
+    margin-top: -15px;
     :link{
         color: #ffffff
         ;
@@ -86,13 +88,13 @@ padding: 5px 0px;
  
  
     .save-more{
-        
+        position: relative;
         border: none;
         border-radius: 10px;
 
         color: white;
       
-        padding: 5px 0px;
+        padding: 0px 0px;
         
         justify-content: space-between;
         display: flex;
@@ -118,11 +120,46 @@ margin-top: 3px;
 
 
    }
+.drop-down{
+    position: absolute;
+    top:40px;
+    right: 0px;
+    z-index: 1;
+    display: block;
+    background-color: white;border-radius: 10px;
+    border: 2px solid black;
+    
+
+      &::before{
+        border-bottom: 11px solid rgba(0, 0, 0, 0.2);
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left:230px;
+        top: -11px;
+   
+      }
+      &::after{
+        border-bottom: 11px solid #000000;
+        border-left: 11px solid transparent;
+        border-right: 11px solid transparent;
+        content: "";
+        display: inline-block;
+        position: absolute;
+        left: 230px;
+        top: -11px;
+     
+      }
+   
+   }
+   
 }
 }
 .navigation{
-    margin-bottom: -5px;
-    margin-top: -25px;
+    margin-bottom: -20px;
+    margin-top: -20px;
     align-items: center;
     .logo-main{
       width: 90px;
@@ -131,16 +168,54 @@ margin-top: 3px;
       
 
     }
+    .cat-drop{
+        position: relative;
+    .drop-down-cat{
+        position: absolute;
+        top:65px;
+        right: -10px;
+        z-index: 1;
+        display: block;
+        background-color: white;border-radius: 10px;
+        border: 1px solid black;
+        
+    
+          &::before{
+            border-bottom: 11px solid rgba(0, 0, 0, 0.2);
+            border-left: 11px solid transparent;
+            border-right: 11px solid transparent;
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left:100px;
+            top: -11px;
+          }
+          &::after{
+            border-bottom: 11px solid #FFFFFF;
+            border-left: 11px solid transparent;
+            border-right: 11px solid transparent;
+            content: "";
+            display: inline-block;
+            position: absolute;
+            left: 100px;
+            top: -10px;
+          }
+       
+       }
+    }
     form{
         position: relative;
-        width: 50%;
+      
+        display: flex;
+        flex-grow: 1;
+        
         
         
      
         .search{
             position: absolute;
             right: 20px;
-            top: 22px;
+            top: 17px;
             
         }
     }

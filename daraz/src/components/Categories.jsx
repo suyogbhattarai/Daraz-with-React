@@ -8,6 +8,8 @@ function Categories() {
     const [category, setCategory] = useState([])
     const [currentCategory, setCurrentCategory] = useState(null);
     const [currentTitle, setCurrentTitle] = useState(null);
+   
+
   
     const handleMenuLeave = () => {
       setCurrentCategory(null);
@@ -58,7 +60,7 @@ function Categories() {
             {currentCategory && (
               <div className="card col   sub-menu rounded"  >
 
-                <ul class="list-group" onMouseEnter={() => handleTitleHover(prodtitle.title)} onMouseLeave={handleMenuLeave}>
+                <ul class="list-group"  onMouseLeave={handleMenuLeave}>
                   {catfilter.slice(0,4).map((prodtitle) =>
                    <Link  to={`/details/${prodtitle.title}`}><li className="list-group-item text-secondary d-flex gap-5 justify-content-between p-3  " style={{
                     fontSize: 13,

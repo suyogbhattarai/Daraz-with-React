@@ -42,7 +42,7 @@
         z-index: 1;
         &::before{
             height: 5px;
-            width: 100%;
+            width: 93%;
             position: absolute;
             content: '';
             top: 289px;
@@ -77,15 +77,19 @@
         
     }
     .cat-menu{
+        position: absolute;
+        bottom: -10px;
+        &
+
+   
         
         
         ul{
             li{
                &:hover{
-                :Link{ 
-                    color: rgb(255, 254, 254) !important;
+                
 
-                }
+                
 
                }
             }
@@ -152,8 +156,8 @@
         transition: 0.5s;
         &:hover{
 
-background-color:rgb(253, 192, 127);
-color: white;
+background-color:rgba(91, 92, 91, 0.466);
+
 :Link{
     color: white;
 }

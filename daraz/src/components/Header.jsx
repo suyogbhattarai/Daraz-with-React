@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import "./header.scss"
 import { Routes,Route, Link } from 'react-router-dom'
 import Home from '../pages/Home'
@@ -6,9 +6,59 @@ import Login from '../pages/Login';
 
 import Details from '../pages/Details';
 import Category from '../pages/Category';
+import Categories from './Categories';
+
+function useScrollToShow() {
+  const [showCategories, setShowCategories] = useState(false);
+
+
+  const handleScroll = () => {
+    if (window.scrollY >= 750) {
+      setShowCategories(true);
+    } else {
+      setShowCategories(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  return showCategories;
+}
+
+
+
+
 
 
 function Header() {
+  const [showDrop,setShowDrop]=useState(false)
+  const handleMouseEnter=()=>{
+    setShowDrop(true)
+  }
+  const handleMouseLeave=()=>{
+    setShowDrop(false)
+  }
+
+  const [category, setCategory] = useState([])
+
+useEffect(() => {
+  const fetchCategories = async () => {
+    const response = await fetch("https://fakestoreapi.com/products/categories");
+    const category = await response.json();
+    setCategory(category);
+  };
+  fetchCategories();
+
+}, []);
+  
+  const showCategories = useScrollToShow();
+
+ 
 
 
  
@@ -28,9 +78,10 @@ function Header() {
       </div>
     </div>)}
    
-     <div className="header">
+     <div className="header py-4">
       <div className="container ">
-        <div className="top">
+        {!showCategories &&(
+        <div className="top ">
           <div className="d-flex justify-content-between">
 
             <nav>
@@ -43,9 +94,15 @@ function Header() {
 
 
       
-            <div className='save-more  '>
-                <img className='logo-1 ' src="https://img.alicdn.com/imgextra/i1/O1CN01Ie2YnK1JmZ1mL3fY5_!!6000000001071-2-tps-60-60.png" alt="" />
+            <div className='save-more   ' onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <img  className='logo-1 ' src="https://img.alicdn.com/imgextra/i1/O1CN01Ie2YnK1JmZ1mL3fY5_!!6000000001071-2-tps-60-60.png" alt="" />
                 <p className='w-100 p-1 ' style={{fontSize:13}}>Save More on App</p>
+                {showDrop &&( <div className="drop-down  p-3 ">
+                  <img style={{width:300,}}  src="https://icms-image.slatic.net/images/ims-web/34d8863d-547e-4bd7-ba41-5fd7022366de.png" alt="" />
+                  <h5 className='text-center mt-3 text-black'>Download the App</h5>
+                  <img src="https://icms-image.slatic.net/images/ims-web/b1bacff9-3e2b-4fd5-9b7b-854f42048c23.png" alt="" />
+                </div>)}
+               
             </div>
             
 
@@ -53,17 +110,27 @@ function Header() {
 
           </div>
         </div>
-        <div className="navigation ">
+        )}
+        
+        
+        <div className="navigation   ">
           <div className="d-flex gap-2 justify-content-between">
             <div>
              <Link to="/"><img className='logo-main ' src="https://icms-image.slatic.net/images/ims-web/e6ac6883-1158-4663-bda4-df5a1aa066e5.png" alt="" /></Link> 
             </div>
-            <div className="categories mt-3">
-          <div className="container">
-            <p className='d-flex justify-content-between'><Link className='text-light'  >Categories <i class="fa fa-angle-down" aria-hidden="true"></i></Link> </p>
-            {/* Add your category links or content here */}
-          </div>
-        </div>
+            {showCategories && (
+           <div class="cat-drop" onMouseLeave={handleMouseLeave}>
+           <button onMouseEnter={handleMouseEnter} style={{border:"none",background:"none"}} class=" mt-3 pb-4 text-light dropdown-toggle  " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <Link className='text-light'>Categories</Link>
+           </button>
+           {showDrop &&(  <ul class="drop-down-cat  p-3 " >
+            {category.map((c)=>(  <li className='text-black '><Link to={`/cat/${c}`} class="dropdown-item text-secondary" href="#">{c}</Link></li>))}
+           
+        
+           </ul>)}
+         
+         </div>
+              )}
             <form className="d-flex align-items-center "  role="search">
               <input className="form-control me-2 " style={{borderRadius:10 ,fontSize:15}} type="search" placeholder="Search in Daraz.."  aria-label="Search" />
               <i class="fa fa-search  search text-secondary rounded p-1  " style={{fontSize:15,backgroundColor:'#f857068e'}} aria-hidden="true"></i>
