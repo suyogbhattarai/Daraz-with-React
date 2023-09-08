@@ -34,7 +34,7 @@ function Footer() {
           <div className="col-lg-3">
             <h5>Daraz International</h5> 
             <div className="d-flex gap-5">
-              <p style={{fontSize:13}}><Link className='text-light'>Pakistan</Link></p>
+              <p style={{fontSize:13}}><img src="" alt="" /><Link className='text-light'>Pakistan</Link></p>
               <p style={{fontSize:13}}><Link className='text-light'>Bhutan</Link></p>
 
               </div>   

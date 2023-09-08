@@ -6,8 +6,9 @@ import Login from '../pages/Login';
 
 import Details from '../pages/Details';
 import Category from '../pages/Category';
-import Categories from './Categories';
+
 import Loginform from './Loginform';
+import Signup from '../pages/Signup';
 
 function useScrollToShow() {
   const [showCategories, setShowCategories] = useState(false);
@@ -145,7 +146,7 @@ useEffect(() => {
               <p style={{fontSize:13}}><Link to="/login" className='text-light' >Login</Link></p>
               </div>
               <p style={{fontSize:13}}>|</p>
-              <p style={{fontSize:13}}><Link to="/signup" className='text-light'>sign up</Link></p>
+              <p style={{fontSize:13}}><Link to="/login" className='text-light'>sign up</Link></p>
               <div className='d-flex gap-2 text-light'>
             <i class="fa fa-globe  ms-3" aria-hidden="true"></i>
             <p style={{fontSize:13}}><Link className='text-light'>EN</Link><i className="fa fa-angle-down" aria-hidden="true"></i></p>
@@ -164,6 +165,7 @@ useEffect(() => {
           <Route path='/cat/:cid' element={<Category/>}/>
           <Route path='/details/:did' element={<Details/>}/>
           <Route path='/loginform' element={<Loginform/>}/>
+          <Route path='/loginform' element={<Signup/>}/>
         
 
           
