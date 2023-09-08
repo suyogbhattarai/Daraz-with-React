@@ -205,19 +205,20 @@ margin-top: 3px;
     }
     form{
         position: relative;
-      
         display: flex;
         flex-grow: 1;
+    }
+    .search{
+        position: sticky;
+        right: 30px;
+        top: 18px;
+        background-color: #ffe1d2ff;
+        display: block;
+        font-size: 17px;
+        padding: 0px 15px;
+        color: #f85606;
+        border-radius: 6px;
         
-        
-        
-     
-        .search{
-            position: absolute;
-            right: 20px;
-            top: 17px;
-            
-        }
     }
 
 }

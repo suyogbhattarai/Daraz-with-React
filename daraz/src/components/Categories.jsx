@@ -47,11 +47,11 @@ function Categories() {
   return (
     <>
     <div className="categories" >
-     <div className="card cat-menu  ">
-              <ul class="list-group">
+     <div className="card cat-menu mb-3  ">
+              <ul class="list-group text-black">
                 {category.map((cat) =>
-                  <li class="list-group-item text-secondary d-flex justify-content-between py-3 " style={{ fontSize: 15,fontWeight:400,letterSpacing:3 }} key={cat}
-                    onMouseEnter={() => handleCategoryHover(cat)} ><Link to={`/cat/${cat}/`} className='text-secondary'>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
+                  <li class="list-group-item text-black d-flex justify-content-between  gap-4 " style={{ fontSize: 15,fontWeight:400,letterSpacing:3,padding:20 }} key={cat}
+                    onMouseEnter={() => handleCategoryHover(cat)} ><Link to={`/cat/${cat}/`} className='text-black'>{cat.toUpperCase()}</Link><i class="fa fa-angle-double-right " aria-hidden="true"></i></li>
                 )
                 }
               </ul>
@@ -78,7 +78,7 @@ function Categories() {
               </div>
             )}
             {currentTitle && (
-              <div className="card  col   product-menu p-3 " onMouseLeave={handleMenuLeave}  >
+              <div className="card  col   product-menu p-4 " onMouseLeave={handleMenuLeave}  >
                 <h4 className='ms-4 mb-3'> Preview:</h4>
                 <ul class="">
                   {titlefilter.map((titl) =>

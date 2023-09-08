@@ -7,6 +7,7 @@ import Login from '../pages/Login';
 import Details from '../pages/Details';
 import Category from '../pages/Category';
 import Categories from './Categories';
+import Loginform from './Loginform';
 
 function useScrollToShow() {
   const [showCategories, setShowCategories] = useState(false);
@@ -114,7 +115,7 @@ useEffect(() => {
         
         
         <div className="navigation   ">
-          <div className="d-flex gap-2 justify-content-between">
+          <div className="d-flex gap-4 justify-content-between">
             <div>
              <Link to="/"><img className='logo-main ' src="https://icms-image.slatic.net/images/ims-web/e6ac6883-1158-4663-bda4-df5a1aa066e5.png" alt="" /></Link> 
             </div>
@@ -133,10 +134,13 @@ useEffect(() => {
               )}
             <form className="d-flex align-items-center "  role="search">
               <input className="form-control me-2 " style={{borderRadius:10 ,fontSize:15}} type="search" placeholder="Search in Daraz.."  aria-label="Search" />
-              <i class="fa fa-search  search text-secondary rounded p-1  " style={{fontSize:15,backgroundColor:'#f857068e'}} aria-hidden="true"></i>
+              <div className='search'>
+            <i class="fa fa-search p-1  "  aria-hidden="true"></i>
+            </div>
             </form>
-            <div className="d-flex gap-2 mt-3 text-light align-items-center  ">
-              <div className="d-flex gap-2 ">
+           
+            <div className="d-flex gap-3 mt-3 text-light align-items-center  ">
+              <div className="d-flex gap-3 ">
               <i class="fa fa-user-o " aria-hidden="true"></i>
               <p style={{fontSize:13}}><Link to="/login" className='text-light' >Login</Link></p>
               </div>
@@ -159,6 +163,7 @@ useEffect(() => {
           <Route path="/login/:lid" element={<Login/>}/>
           <Route path='/cat/:cid' element={<Category/>}/>
           <Route path='/details/:did' element={<Details/>}/>
+          <Route path='/loginform' element={<Loginform/>}/>
         
 
           

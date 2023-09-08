@@ -2,13 +2,16 @@ import React, { useState } from 'react'
 import "./home.scss"
 import Categories from '../components/Categories';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+
 {/* $brand:#f85606; */}
 import "../pages/Details"
+import Homeproducts from '../components/Homeproducts';
+import { Link } from 'react-router-dom';
 
 
 function Home() {
   const [products,setProducts]=useState([])
+  const [notFound, setNotFound] = useState(false); // Add a state to track whether the product is found
   useEffect(() => {
     const recieveProducts=async()=>{
       const response=await fetch("https://fakestoreapi.com/products");
@@ -21,6 +24,13 @@ function Home() {
   
    recieveProducts();
   }, [])
+  useEffect(() => {
+    if (products.length === 0) {
+      setNotFound(true);
+    } else {
+      setNotFound(false);
+    }
+  }, [products]);
   
   
  
@@ -30,8 +40,8 @@ function Home() {
     <div className="banner-main">
       <div >
         <div className="row "  >
-          <div className="col-lg-3 category-box ">
-            <p className='cat-title' >Mega Menu </p>
+          <div className="col-lg-3 category-box  ">
+            {/* <p className='cat-title ' >Mega Menu </p> */}
            
 
             <Categories/>
@@ -64,36 +74,66 @@ function Home() {
       </div>
     </div>
     <div className="products">
-      <h4 className='mb-4 mt-5 products-title'>Just For You</h4>
-      <div className="row">
-      {products.map((prod)=>
-      <>
-      <div className="col-lg-2 mb-4 d-flex item-center ">
-        <Link  to={`/details/${prod.title}`}>
-      <div style={{maxWidth:1400,height:260,overflow:'hidden'}} className="card shadow p-4 pb-3 hover-zoom"   >
-        <div className='text-center'> 
-        <Link to={`/details/${prod.title}`}><img style={{maxWidth:100,maxHeight:100,overflow:'hidden',textAlign:'center'}} src={prod.image}  alt="" /></Link>
-        <p style={{
-  fontSize: 14,
-  paddingTop:3,
-  display: '-webkit-box',
-  WebkitLineClamp: 2, // Number of lines you want to display
-  WebkitBoxOrient: 'vertical',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+    <h4 className='mb-4 mt-5 products-title'>Just for you</h4>
+    {notFound ? ( // Display a message if the product is not found
+          <div className=' text-secondary text-center p-5 m-3'>
+            <div className="loader mx-auto my-3"></div>
+           
+         
+            </div>
+            
+        ) : (
+          <>
+    <div className="row bg-light p-3">
+    {products.map((prod)=>
+    <>
+    <div className="col-lg-2 d-flex item-center  ">
+      <Link  to={`/details/${prod.title}`}>
+    <div style={{maxWidth:1400,height:260,overflow:'hidden'}} className="p-card    "   >
+      <div className='row'> 
+      <div className="col-lg-12" style={{maxWidth:100,maxHeight:100}}>
+      <Link to={`/details/${prod.title}`}><img style={{maxWidth:200,maxHeight:100,overflow:'hidden',textAlign:"center"}} src={prod.image}  alt="" /></Link>
+      </div>
+      </div>
+      <div className='row'> 
+      <div className="col-lg-12" style={{maxHeight:150,maxWidth:150}} >
+      <p style={{
+fontSize: 14,
+paddingTop:3,
+display: '-webkit-box',
+WebkitLineClamp: 2, // Number of lines you want to display
+WebkitBoxOrient: 'vertical',
+overflow: 'hidden',
+textOverflow: 'ellipsis',
 }}><Link to={`/details/${prod.title}` } className='text-black ' >{prod.title}</Link></p>
-</div>
-        <p >${prod.price}</p>
-        <div className="d-flex  "><u className='text-primary'><a href="">Buy Now!</a></u></div>
+  </div>
       </div>
-      </Link>
-      </div>
-      </>
-       )}
-      </div>
-      <div style={{marginInlineStart:500}}  className=' load-btn '><h4 className='text-center p-2'>Load More</h4></div>
+      <div className='row'> 
+      <div className="col-lg-12 ">
 
+      <p className='pp' >Rs.{prod.price}</p>
+      </div>
+      </div>
+      <div className='row'> 
+      <div className="col-lg-12">
+      <div className="d-flex gap-3 "><p style={{textDecoration:"line-through"}}>Rs.299</p><p>-82%</p></div>
     </div>
+      </div>
+      </div>
+    </Link>
+    </div>
+    </>
+     )}
+    </div>
+
+    </>
+        )}
+
+  </div>
+ <Homeproducts title="men's clothing" />
+ <Homeproducts title="jewelery" />
+ <Homeproducts title="electronics" />
+ <Homeproducts title="women's clothing" />
     </div>
     </>
    

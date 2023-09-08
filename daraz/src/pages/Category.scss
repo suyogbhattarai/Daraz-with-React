@@ -3,10 +3,33 @@
     margin: 10px 0px;
     margin-bottom: 30px;
 }
-.card{
-    
+.p-card{
+    margin-top: 30px;
+    transition: 0.5s;
+    padding: 10px;
+    width: 170px;
+
+    .pp{color: #f85606;}
+    color: #828482;
     &:hover{
-        background-color: #74747444;
-       
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+
+
+
+
+
     }
+}
+.load-btn{
+    color: #f85606;
+    border: 1px solid #f85606;
+    display: inline-block;
+    text-align: center;
+   
+    p{
+        margin-top: 5px;
+    }
+    
+    
 }
